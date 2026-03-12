@@ -454,6 +454,12 @@
     /* ── Hide DMM App Login everywhere on mobile (can't log in on phone) ── */
     a[href*="app.drivemoremedia"] { display: none !important; }
 
+    /* ── Fix: allow vertical scroll when thumb touches a glow card ── */
+    [data-glow] { touch-action: pan-y !important; }
+
+    /* ── Fix: allow glow button blur to bleed outside hero section ── */
+    #hero { overflow: visible !important; }
+
     /* ── Mobile pill strip ── */
     #mobile-pill-strip { display: block !important; overflow: visible !important; }
     /* Extra padding gives pills room to float upward without being clipped */
@@ -1208,6 +1214,19 @@
       // Start at beginning of second set so loop is seamless in both directions
       var pos = setWidth;
       track.style.transform = 'translateX(-' + pos + 'px)';
+
+      // Recalculate setWidth from actual rendered item size (CSS may override ITEM_SIZE on mobile)
+      requestAnimationFrame(function() {
+        var firstItem = track.querySelector('a');
+        if (firstItem) {
+          var actualW = firstItem.offsetWidth;
+          if (Math.abs(actualW - ITEM_SIZE) > 2) {
+            setWidth = clients.length * (actualW + GAP);
+            pos = setWidth;
+            track.style.transform = 'translateX(-' + pos + 'px)';
+          }
+        }
+      });
 
       var isHovered = false;
       var isDragging = false;
