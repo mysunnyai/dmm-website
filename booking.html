@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Strategy Call — Drive More Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #000; color: #fff; min-height: 100vh; overflow-x: hidden; }
+
+    /* ── Ambient background glow ── */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(61,127,91,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(61,127,91,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,204,102,0.06) 0%, transparent 50%);
+    }
+
+    /* ── Meteors (same as #about section on main site) ── */
+    @keyframes dmmMeteor {
+      0%   { transform: rotate(215deg) translateX(0); opacity: 1; }
+      70%  { opacity: 1; }
+      100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+    }
+    .dmm-meteor {
+      position: fixed;
+      top: 0;
+      width: 2px;
+      height: 2px;
+      border-radius: 9999px;
+      background: rgba(148,163,184,0.8);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+      opacity: 0;
+      animation: dmmMeteor var(--dur) linear var(--delay) infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .dmm-meteor::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(to right, #64748b, transparent);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: transparent;
+    }
+
+    /* ── Hero text ── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up-1 { animation: fade-up 0.7s ease forwards; }
+    .fade-up-2 { animation: fade-up 0.7s 0.15s ease both; }
+    .fade-up-3 { animation: fade-up 0.7s 0.3s ease both; }
+
+    /* ── Calendar container ── */
+    .cal-wrap {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(61,127,91,0.15);
+    }
+    /* green top accent line */
+    .cal-wrap::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #3d7f5b 30%, #fc9 50%, #9cf 70%, transparent);
+      z-index: 3;
+    }
+
+    /* ── Trust pills ── */
+    .trust-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 9999px;
+      font-size: 12px; font-weight: 600;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.65);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient glow -->
+  <div class="bg-glow"></div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+      <img src="logo.png" alt="Drive More Media" style="height:28px; width:auto;">
+      <span style="font-weight:700; font-size:15px; color:#fff;">Drive More Media</span>
+    </a>
+    <a href="index.html" style="font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
+       onmouseenter="this.style.color='rgba(255,255,255,0.8)'" onmouseleave="this.style.color='rgba(255,255,255,0.45)'">
+      ← Back to site
+    </a>
+  </nav>
+
+  <!-- ── MAIN ── -->
+  <main style="position:relative; z-index:1; max-width:860px; margin:0 auto; padding:64px 24px 80px;">
+
+    <!-- Hero copy -->
+    <div class="text-center fade-up-1" style="margin-bottom:48px;">
+
+      <!-- Badge -->
+      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(61,127,91,0.15); border:1px solid rgba(61,127,91,0.35); border-radius:9999px; padding:6px 16px; font-size:12px; font-weight:600; color:#6fcf97; margin-bottom:24px; letter-spacing:0.04em;">
+        <span style="width:7px; height:7px; background:#3d7f5b; border-radius:50%; box-shadow:0 0 8px #3d7f5b;"></span>
+        FREE 30-MINUTE STRATEGY CALL
+      </div>
+
+      <h1 class="fade-up-1" style="font-size:clamp(32px,5vw,58px); font-weight:800; letter-spacing:-1.5px; line-height:1.1; margin-bottom:20px;">
+        Let's Build Something<br/>
+        <span style="background: linear-gradient(90deg, #3d7f5b, #6fcf97); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">That Actually Grows.</span>
+      </h1>
+
+      <p class="fade-up-2" style="font-size:17px; color:rgba(255,255,255,0.5); max-width:480px; margin:0 auto 32px; line-height:1.7;">
+        Pick a time that works for you. No pressure, no pitch — just a real conversation about your growth.
+      </p>
+
+      <!-- Trust pills -->
+      <div class="fade-up-3" style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:0;">
+        <span class="trust-pill">✅ No commitment required</span>
+        <span class="trust-pill">⚡ Results-focused conversation</span>
+        <span class="trust-pill">🎯 Tailored to your business</span>
+      </div>
+    </div>
+
+    <!-- Calendar embed -->
+    <div class="cal-wrap fade-up-3" style="padding:0;">
+      <iframe
+        src="https://link.drivemoremedia.com/widget/booking/DzSGYmBG9zwaNDeoeeYX"
+        style="width:100%; min-height:680px; border:none; display:block;"
+        scrolling="no"
+        id="xgcPytjxCtx0mLojWzI8_1773262716092">
+      </iframe>
+    </div>
+
+    <!-- Bottom reassurance -->
+    <p style="text-align:center; margin-top:32px; font-size:13px; color:rgba(255,255,255,0.25); line-height:1.7;">
+      Trusted by brands across Canada &amp; the US.
+    </p>
+
+  </main>
+
+  <script src="https://link.drivemoremedia.com/js/form_embed.js" type="text/javascript"></script>
+
+  <!-- Meteor shower (same as #about on main site) -->
+  <script>
+    (function () {
+      for (var i = 0; i < 24; i++) {
+        var dur = (Math.random() * 8 + 2);
+        var m = document.createElement('span');
+        m.className = 'dmm-meteor';
+        m.style.left  = Math.floor(Math.random() * (window.innerWidth + 800) - 400) + 'px';
+        m.style.setProperty('--dur', dur.toFixed(1) + 's');
+        // Use negative delay so ~half the meteors are already mid-flight on load
+        var delay = i < 12
+          ? -(Math.random() * dur).toFixed(2)   // negative = start mid-animation
+          :  (Math.random() * 3).toFixed(2);    // small positive = appear within 3s
+        m.style.setProperty('--delay', delay + 's');
+        document.body.appendChild(m);
+      }
+    })();
+  </script>
+
+</body>
+</html>
