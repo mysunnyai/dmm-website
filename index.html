@@ -812,18 +812,18 @@
       <a href="booking.html" style="display:inline-block;text-decoration:none;margin-bottom:20px;">
         <div class="glow-btn-wrapper" style="display:inline-block;">
           <div style="position:relative;">
-            <div class="glow-layer" style="position:absolute;inset:0;z-index:-20;overflow:hidden;filter:blur(2em) url(#glow-f1);">
+            <div class="glow-layer" style="position:absolute;inset:0;z-index:-20;overflow:hidden;-webkit-filter:blur(2em);filter:blur(2em);">
               <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#f50 30%,transparent 50%,#05f 70%);"></div>
             </div>
-            <div class="glow-layer" style="position:absolute;inset:-0.125em;z-index:-20;overflow:hidden;filter:blur(0.25em) url(#glow-f2);border-radius:0.75em;">
+            <div class="glow-layer" style="position:absolute;inset:-0.125em;z-index:-20;overflow:hidden;-webkit-filter:blur(0.25em);filter:blur(0.25em);border-radius:0.75em;">
               <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#f95 20%,transparent 45%,transparent 55%,#59f 80%);"></div>
             </div>
-            <div style="padding:2px;background:rgba(0,0,0,0.33);clip-path:path('M 170 0 C 201 0 206 5 206 33 C 206 61 201 66 170 66 L 33 66 C 5 66 0 61 0 33 C 0 5 5 0 33 0 Z');">
+            <div style="padding:2px;background:rgba(0,0,0,0.33);border-radius:33px;-webkit-clip-path:path('M 170 0 C 201 0 206 5 206 33 C 206 61 201 66 170 66 L 33 66 C 5 66 0 61 0 33 C 0 5 5 0 33 0 Z');clip-path:path('M 170 0 C 201 0 206 5 206 33 C 206 61 201 66 170 66 L 33 66 C 5 66 0 61 0 33 C 0 5 5 0 33 0 Z');">
               <div style="position:relative;">
-                <div class="glow-layer" style="position:absolute;inset:-2px;z-index:-10;overflow:hidden;filter:blur(2px) url(#glow-f3);border-radius:inherit;">
+                <div class="glow-layer" style="position:absolute;inset:-2px;z-index:-10;overflow:hidden;-webkit-filter:blur(2px);filter:blur(2px);border-radius:inherit;">
                   <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#fc9 30%,transparent 45%,transparent 55%,#9cf 70%);"></div>
                 </div>
-                <div style="display:flex;align-items:center;justify-content:center;width:200px;height:60px;background:#111215;color:#fff;overflow:hidden;clip-path:path('M 170 0 C 195 0 200 5 200 30 C 200 55 195 60 170 60 L 30 60 C 5 60 0 55 0 30 C 0 5 5 0 30 0 Z');font-size:13px;font-weight:600;text-align:center;padding:0 16px;white-space:nowrap;">
+                <div style="display:flex;align-items:center;justify-content:center;width:200px;height:60px;background:#111215;color:#fff;overflow:hidden;border-radius:30px;-webkit-clip-path:path('M 170 0 C 195 0 200 5 200 30 C 200 55 195 60 170 60 L 30 60 C 5 60 0 55 0 30 C 0 5 5 0 30 0 Z');clip-path:path('M 170 0 C 195 0 200 5 200 30 C 200 55 195 60 170 60 L 30 60 C 5 60 0 55 0 30 C 0 5 5 0 30 0 Z');font-size:13px;font-weight:600;text-align:center;padding:0 16px;white-space:nowrap;">
                   Book a Strategy Call
                 </div>
               </div>
@@ -1205,15 +1205,15 @@
         var img = document.createElement('img');
         img.src = c.src;
         img.alt = c.alt;
-        img.loading = 'lazy';
-        img.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block; pointer-events:none; border-radius:14px;';
+        img.loading = 'eager';
+        img.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block; pointer-events:none; border-radius:14px; -webkit-transform:translateZ(0); transform:translateZ(0);';
         a.appendChild(img);
         track.appendChild(a);
       });
 
       // Start at beginning of second set so loop is seamless in both directions
       var pos = setWidth;
-      track.style.transform = 'translateX(-' + pos + 'px)';
+      track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
 
       // Recalculate setWidth from actual rendered item size (CSS may override ITEM_SIZE on mobile)
       requestAnimationFrame(function() {
@@ -1240,7 +1240,7 @@
           // Seamless loop: jump back by one set width
           if (pos >= setWidth * 2) pos -= setWidth;
           if (pos < 0) pos += setWidth;
-          track.style.transform = 'translateX(-' + pos + 'px)';
+          track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
         }
         requestAnimationFrame(tick);
       }
@@ -1264,7 +1264,7 @@
         pos = dragStartPos + dx;
         if (pos >= setWidth * 2) pos -= setWidth;
         if (pos < 0) pos += setWidth;
-        track.style.transform = 'translateX(-' + pos + 'px)';
+        track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
       });
       window.addEventListener('mouseup', function() {
         if (isDragging) { isDragging = false; track.style.cursor = 'grab'; }
@@ -1283,7 +1283,7 @@
         pos = dragStartPos + dx;
         if (pos >= setWidth * 2) pos -= setWidth;
         if (pos < 0) pos += setWidth;
-        track.style.transform = 'translateX(-' + pos + 'px)';
+        track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
       }, { passive: true });
 
       track.addEventListener('touchend', function() {
