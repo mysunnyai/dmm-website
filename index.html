@@ -256,15 +256,15 @@
       filter: blur(20px); background: none; pointer-events: none; border: none;
     }
     [data-glow] > [data-glow]::before { inset: -10px; border-width: 10px; }
-    @keyframes speen {
-      0% { transform: rotate(10deg); }
-      50% { transform: rotate(190deg); }
-      100% { transform: rotate(370deg); }
-    }
-    @keyframes woah {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(0.75); }
-    }
+    /* ── CTA Button — spinning conic-gradient border, works on all browsers ── */
+    @keyframes cta-ring-spin { to { transform: rotate(360deg); } }
+    .cta-btn-link { display:inline-block; text-decoration:none; margin-bottom:20px; position:relative; -webkit-tap-highlight-color:transparent; }
+    .cta-btn-border { position:relative; border-radius:9999px; padding:2px; overflow:hidden; }
+    .cta-btn-spin { position:absolute; inset:-100%; background:conic-gradient(from 0deg,#ff5500,#ff8800,transparent 42%,#0055ff,transparent 58%,#ff5500); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; }
+    .cta-btn-glow { position:absolute; inset:-14px; border-radius:9999px; background:conic-gradient(from 0deg,rgba(255,85,0,0.6),rgba(0,85,255,0.6),rgba(255,85,0,0.6)); -webkit-filter:blur(22px); filter:blur(22px); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; z-index:-1; }
+    .cta-btn-face { position:relative; z-index:1; background:#111215; color:#fff; border-radius:9999px; width:200px; height:60px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; white-space:nowrap; transition:background 0.2s; }
+    .cta-btn-link:hover .cta-btn-face,
+    .cta-btn-link:active .cta-btn-face { background:#1c1f26; }
     @keyframes sparkle-breathe {
       0%, 100% { opacity: 0.55; }
       50% { opacity: 1; }
@@ -278,17 +278,6 @@
         box-shadow: 0 0 28px rgba(255,255,255,0.18), 0 0 56px rgba(255,255,255,0.07);
         border-color: rgba(255,255,255,0.42);
       }
-    }
-    .glow-btn-wrapper .glow-layer {
-      opacity: 0.5;
-      transition: opacity 300ms;
-    }
-    .glow-btn-wrapper:hover .glow-layer,
-    .glow-btn-wrapper.glow-btn-active .glow-layer { opacity: 0.75; }
-    .glow-btn-wrapper:active .glow-layer { opacity: 1; }
-    /* Spin always on — no hover required */
-    .glow-btn-wrapper .glow-spin {
-      animation: speen 8s cubic-bezier(0.56,0.15,0.28,0.86) infinite, woah 4s infinite;
     }
     /* board-tagline letter eraser — see script at bottom */
     #board-tagline .ec { display: inline; }
@@ -362,7 +351,7 @@
     .float-a, .float-b, .float-c, .float-d { display: none !important; }
 
     /* Book a Strategy Call button */
-    .glow-btn-wrapper { transform: scale(0.85); transform-origin: center; }
+    .cta-btn-link { transform: scale(0.85); transform-origin: center; }
 
     /* Sticky note — sit in the top-right white space of the board */
     #sticky-note { top: 14px !important; right: 14px !important; transform: rotate(2deg) scale(0.72) !important; transform-origin: top right !important; }
@@ -809,26 +798,11 @@
     <!-- ═══ BADGE + CTA + CHANNELS ═══ -->
     <div style="text-align:center; margin-top:64px; position:relative; z-index:10; width:100%;">
       <!-- CTA -->
-      <a href="booking.html" style="display:inline-block;text-decoration:none;margin-bottom:20px;">
-        <div class="glow-btn-wrapper" style="display:inline-block;">
-          <div style="position:relative;">
-            <div class="glow-layer" style="position:absolute;inset:0;z-index:-20;overflow:hidden;-webkit-filter:blur(2em);filter:blur(2em);">
-              <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#f50 30%,transparent 50%,#05f 70%);"></div>
-            </div>
-            <div class="glow-layer" style="position:absolute;inset:-0.125em;z-index:-20;overflow:hidden;-webkit-filter:blur(0.25em);filter:blur(0.25em);border-radius:0.75em;">
-              <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#f95 20%,transparent 45%,transparent 55%,#59f 80%);"></div>
-            </div>
-            <div style="padding:2px;background:rgba(0,0,0,0.33);border-radius:33px;-webkit-clip-path:path('M 170 0 C 201 0 206 5 206 33 C 206 61 201 66 170 66 L 33 66 C 5 66 0 61 0 33 C 0 5 5 0 33 0 Z');clip-path:path('M 170 0 C 201 0 206 5 206 33 C 206 61 201 66 170 66 L 33 66 C 5 66 0 61 0 33 C 0 5 5 0 33 0 Z');">
-              <div style="position:relative;">
-                <div class="glow-layer" style="position:absolute;inset:-2px;z-index:-10;overflow:hidden;-webkit-filter:blur(2px);filter:blur(2px);border-radius:inherit;">
-                  <div class="glow-spin" style="position:absolute;inset:-150%;background:linear-gradient(90deg,#fc9 30%,transparent 45%,transparent 55%,#9cf 70%);"></div>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:center;width:200px;height:60px;background:#111215;color:#fff;overflow:hidden;border-radius:30px;-webkit-clip-path:path('M 170 0 C 195 0 200 5 200 30 C 200 55 195 60 170 60 L 30 60 C 5 60 0 55 0 30 C 0 5 5 0 30 0 Z');clip-path:path('M 170 0 C 195 0 200 5 200 30 C 200 55 195 60 170 60 L 30 60 C 5 60 0 55 0 30 C 0 5 5 0 30 0 Z');font-size:13px;font-weight:600;text-align:center;padding:0 16px;white-space:nowrap;">
-                  Book a Strategy Call
-                </div>
-              </div>
-            </div>
-          </div>
+      <a href="booking.html" class="cta-btn-link">
+        <div class="cta-btn-glow"></div>
+        <div class="cta-btn-border">
+          <div class="cta-btn-spin"></div>
+          <div class="cta-btn-face">Book a Strategy Call</div>
         </div>
       </a>
 
