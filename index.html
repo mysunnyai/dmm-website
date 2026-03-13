@@ -1139,8 +1139,8 @@
       var SPEED = 0.6;     // px per frame
       var track = document.getElementById('clients-track');
 
-      // Build 3× duplicates for seamless infinite loop
-      var allItems = clients.concat(clients).concat(clients);
+      // Build 2× duplicates for seamless infinite loop (start at 0 so Safari paints all images)
+      var allItems = clients.concat(clients);
       var setWidth = clients.length * (ITEM_SIZE + GAP); // width of one full set
 
       allItems.forEach(function(c) {
@@ -1185,9 +1185,9 @@
         track.appendChild(a);
       });
 
-      // Start at beginning of second set so loop is seamless in both directions
-      var pos = setWidth;
-      track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
+      // Start at 0 — all images begin in/near viewport so Safari paints them all
+      var pos = 0;
+      track.style.transform = 'translate3d(0,0,0)';
 
       // Recalculate setWidth from actual rendered item size (CSS may override ITEM_SIZE on mobile)
       requestAnimationFrame(function() {
@@ -1196,8 +1196,8 @@
           var actualW = firstItem.offsetWidth;
           if (Math.abs(actualW - ITEM_SIZE) > 2) {
             setWidth = clients.length * (actualW + GAP);
-            pos = setWidth;
-            track.style.transform = 'translate3d(-' + pos + 'px,0,0)';
+            pos = 0;
+            track.style.transform = 'translate3d(0,0,0)';
           }
         }
       });
