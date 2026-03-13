@@ -256,12 +256,13 @@
       filter: blur(20px); background: none; pointer-events: none; border: none;
     }
     [data-glow] > [data-glow]::before { inset: -10px; border-width: 10px; }
-    /* ── CTA Button — spinning conic-gradient border, works on all browsers ── */
-    @keyframes cta-ring-spin { to { transform: rotate(360deg); } }
-    .cta-btn-link { display:inline-block; text-decoration:none; margin-bottom:20px; position:relative; -webkit-tap-highlight-color:transparent; }
-    .cta-btn-border { position:relative; border-radius:9999px; padding:2px; overflow:hidden; }
-    .cta-btn-spin { position:absolute; inset:-100%; background:conic-gradient(from 0deg,#ff5500,#ff8800 25%,#0055ff 50%,#ff8800 75%,#ff5500); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; }
-    .cta-btn-face { position:relative; z-index:1; background:#111215; color:#fff; border-radius:9999px; width:200px; height:60px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; white-space:nowrap; transition:background 0.2s; }
+    /* ── CTA Button — animated box-shadow border, glitch-free on all browsers ── */
+    @keyframes cta-border-cycle {
+      0%,100% { box-shadow: 0 0 0 2px #ff5500, 0 0 18px rgba(255,85,0,0.45); }
+      50%      { box-shadow: 0 0 0 2px #0055ff, 0 0 18px rgba(0,85,255,0.45); }
+    }
+    .cta-btn-link { display:inline-block; text-decoration:none; margin-bottom:20px; -webkit-tap-highlight-color:transparent; }
+    .cta-btn-face { background:#111215; color:#fff; border-radius:9999px; width:200px; height:60px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; white-space:nowrap; transition:background 0.2s; animation:cta-border-cycle 3s ease-in-out infinite; -webkit-animation:cta-border-cycle 3s ease-in-out infinite; }
     .cta-btn-link:hover .cta-btn-face,
     .cta-btn-link:active .cta-btn-face { background:#1c1f26; }
     @keyframes sparkle-breathe {
@@ -798,10 +799,7 @@
     <div style="text-align:center; margin-top:64px; position:relative; z-index:10; width:100%;">
       <!-- CTA -->
       <a href="booking.html" class="cta-btn-link">
-        <div class="cta-btn-border">
-          <div class="cta-btn-spin"></div>
-          <div class="cta-btn-face">Book a Strategy Call</div>
-        </div>
+        <div class="cta-btn-face">Book a Strategy Call</div>
       </a>
 
       <!-- Channel strip -->
@@ -1156,7 +1154,9 @@
           'border-radius:14px',
           'overflow:hidden',
           'padding:16px',
+          'width:' + ITEM_SIZE + 'px',
           'min-width:' + ITEM_SIZE + 'px',
+          'max-width:' + ITEM_SIZE + 'px',
           'height:' + ITEM_SIZE + 'px',
           'flex-shrink:0',
           'transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease, background 0.4s ease',
