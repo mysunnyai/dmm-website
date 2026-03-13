@@ -260,8 +260,7 @@
     @keyframes cta-ring-spin { to { transform: rotate(360deg); } }
     .cta-btn-link { display:inline-block; text-decoration:none; margin-bottom:20px; position:relative; -webkit-tap-highlight-color:transparent; }
     .cta-btn-border { position:relative; border-radius:9999px; padding:2px; overflow:hidden; }
-    .cta-btn-spin { position:absolute; inset:-100%; background:conic-gradient(from 0deg,#ff5500,#ff8800,transparent 42%,#0055ff,transparent 58%,#ff5500); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; }
-    .cta-btn-glow { position:absolute; inset:-14px; border-radius:9999px; background:conic-gradient(from 0deg,rgba(255,85,0,0.6),rgba(0,85,255,0.6),rgba(255,85,0,0.6)); -webkit-filter:blur(22px); filter:blur(22px); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; z-index:-1; }
+    .cta-btn-spin { position:absolute; inset:-100%; background:conic-gradient(from 0deg,#ff5500,#ff8800 25%,#0055ff 50%,#ff8800 75%,#ff5500); animation:cta-ring-spin 2.5s linear infinite; -webkit-animation:cta-ring-spin 2.5s linear infinite; }
     .cta-btn-face { position:relative; z-index:1; background:#111215; color:#fff; border-radius:9999px; width:200px; height:60px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; white-space:nowrap; transition:background 0.2s; }
     .cta-btn-link:hover .cta-btn-face,
     .cta-btn-link:active .cta-btn-face { background:#1c1f26; }
@@ -799,7 +798,6 @@
     <div style="text-align:center; margin-top:64px; position:relative; z-index:10; width:100%;">
       <!-- CTA -->
       <a href="booking.html" class="cta-btn-link">
-        <div class="cta-btn-glow"></div>
         <div class="cta-btn-border">
           <div class="cta-btn-spin"></div>
           <div class="cta-btn-face">Book a Strategy Call</div>
