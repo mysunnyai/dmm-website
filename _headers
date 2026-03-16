@@ -1,0 +1,21 @@
+/*
+  # Prevent clickjacking - stops your site being embedded in iframes on other domains
+  X-Frame-Options: SAMEORIGIN
+
+  # Stops browsers guessing file types (prevents MIME-type attacks)
+  X-Content-Type-Options: nosniff
+
+  # Forces HTTPS for 1 year and includes subdomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Controls how much referrer info is sent when clicking links off your site
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Restricts what browser features your site can use (reduces attack surface)
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # Content Security Policy - tells browsers only load resources from trusted sources
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com; frame-src https://calendly.com https://book.drivemoremedia.com; object-src 'none'; base-uri 'self';
+
+  # Opt out of Google's FLoC / Topics API tracking
+  Permissions-Policy: interest-cohort=()
