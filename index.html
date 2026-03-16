@@ -548,6 +548,77 @@
       </filter>
     </defs>
   </svg>
+
+  <!-- Schema.org Structured Data — tells Google/crawlers exactly who DMM is -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MarketingAgency",
+        "@id": "https://www.drivemoremedia.com/#organization",
+        "name": "Drive More Media",
+        "alternateName": "DMM",
+        "url": "https://www.drivemoremedia.com",
+        "logo": "https://www.drivemoremedia.com/logo.png",
+        "description": "Drive More Media is a Toronto-based digital marketing agency specializing in customer acquisition through funnel building, AI agents, automations, paid ads, and content creation.",
+        "slogan": "Driving Traffic, Delivering Results",
+        "foundingLocation": "Toronto, Ontario, Canada",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toronto",
+          "addressRegion": "Ontario",
+          "addressCountry": "CA"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-647-370-9148",
+          "email": "hello@drivemoremedia.com",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Canada"
+        },
+        "sameAs": [
+          "https://www.drivemoremedia.com"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Marketing Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Funnel Building" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing Automations (SMS & Email)" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paid Advertising" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Creation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Customer Acquisition Infrastructure" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.drivemoremedia.com/#website",
+        "url": "https://www.drivemoremedia.com",
+        "name": "Drive More Media",
+        "description": "Toronto digital marketing agency — Paid Ads, AI Automations, Funnel Building & Content Creation",
+        "publisher": { "@id": "https://www.drivemoremedia.com/#organization" },
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.drivemoremedia.com/#webpage",
+        "url": "https://www.drivemoremedia.com",
+        "name": "Drive More Media | Digital Marketing Agency Toronto | Paid Ads, AI & Automation",
+        "isPartOf": { "@id": "https://www.drivemoremedia.com/#website" },
+        "about": { "@id": "https://www.drivemoremedia.com/#organization" },
+        "inLanguage": "en-CA"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
